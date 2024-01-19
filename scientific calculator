@@ -1,0 +1,118 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+// Function declarations
+double add(double a, double b);
+double subtract(double a, double b);
+double multiply(double a, double b);
+double divide(double a, double b);
+double squareRoot(double a);
+double power(double base, double exponent);
+double sine(double angle);
+double cosine(double angle);
+double tangent(double angle);
+
+int main() {
+    char operation;
+    double operand1, operand2, result;
+
+    cout << "Enter operation (+, -, *, /, sqrt, pow, sin, cos, tan): ";
+    cin >> operation;
+
+    if (operation != 'sqrt' && operation != 'sin' && operation != 'cos' && operation != 'tan') {
+        cout << "Enter two operands: ";
+        cin >> operand1 >> operand2;
+    } else {
+        cout << "Enter operand: ";
+        cin >> operand1;
+    }
+
+    switch (operation) {
+        case '+':
+            result = add(operand1, operand2);
+            break;
+        case '-':
+            result = subtract(operand1, operand2);
+            break;
+        case '*':
+            result = multiply(operand1, operand2);
+            break;
+        case '/':
+            result = divide(operand1, operand2);
+            break;
+        case 'sqrt':
+            result = squareRoot(operand1);
+            break;
+        case 'pow':
+            cout << "Enter exponent: ";
+            double exponent;
+            cin >> exponent;
+            result = power(operand1, exponent);
+            break;
+        case 'sin':
+            result = sine(operand1);
+            break;
+        case 'cos':
+            result = cosine(operand1);
+            break;
+        case 'tan':
+            result = tangent(operand1);
+            break;
+        default:
+            cout << "Invalid operation\n";
+            return 1;
+    }
+
+    cout << "Result: " << result << endl;
+
+    return 0;
+}
+
+// Function definitions
+double add(double a, double b) {
+    return a + b;
+}
+
+double subtract(double a, double b) {
+    return a - b;
+}
+
+double multiply(double a, double b) {
+    return a * b;
+}
+
+double divide(double a, double b) {
+    if (b != 0) {
+        return a / b;
+    } else {
+        cout << "Error: Division by zero\n";
+        exit(1);
+    }
+}
+
+double squareRoot(double a) {
+    if (a >= 0) {
+        return sqrt(a);
+    } else {
+        cout << "Error: Cannot calculate square root of a negative number\n";
+        exit(1);
+    }
+}
+
+double power(double base, double exponent) {
+    return pow(base, exponent);
+}
+
+double sine(double angle) {
+    return sin(angle);
+}
+
+double cosine(double angle) {
+    return cos(angle);
+}
+
+double tangent(double angle) {
+    return tan(angle);
+}
